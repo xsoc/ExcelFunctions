@@ -15,7 +15,7 @@ Refers to: =LAMBDA(VALUE,LEN(VALUE)=0)
 
 ## CleanFileName(FILENAME)
 Strips illegal characters from a filename, as documented in [Microsoft's Naming Files, Paths, and Namespaces](https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file).
-It expects a file name *only*, this will strip slashes, concatenate the path later.
+It expects a file name *only*, this will strip slashes, so concatenate the path later.
 ```
 =LAMBDA(FILENAME,REDUCE(FILENAME,HSTACK(CHAR(SEQUENCE(,30,,1)),{"<",">",":","""","/","\","|","?","*"}),LAMBDA(NAME,CHAR,SUBSTITUTE(NAME,CHAR,""))))
 ```
@@ -37,6 +37,7 @@ Examples:
 ```
 =GetFirst({"","","Hello","World"})
 Return value: Hello
+=GetFirst(VSTACK(A1,A3,A5,B2,B4))
 ```
 
 ## InArray(ARRAY, VALUE)
