@@ -18,9 +18,9 @@ Strips illegal characters from a filename, as documented in [Microsoft's Naming 
 It expects a file name *only*, this will strip slashes, concatenate the path later.
 ```
 =LAMBDA(FILENAME,REDUCE(FILENAME,HSTACK(CHAR(SEQUENCE(,30,,1)),{"<",">",":","""","/","\","|","?","*"}),LAMBDA(NAME,CHAR,SUBSTITUTE(NAME,CHAR,""))))
-
+```
 Examples:
-
+```
 CleanFileName("Bad> *File* Name!")
 Return value: Bad File Name!
 
@@ -32,9 +32,9 @@ Expects data as ROWS. If number of COLS > 1, it assumes data is COLS and will tr
 If you need to pass discrete values, use VSTACK().
 ```
 =LAMBDA(ARRAY,LET(ARRAY_ROWS,IF(COLUMNS(ARRAY)>1,TRANSPOSE(ARRAY),ARRAY),INDEX(ARRAY_ROWS,XMATCH(TRUE,BYROW(ARRAY_ROWS,LAMBDA(VALUE,LEN(VALUE)>0))))))
-
+```
 Examples:
-
+```
 =GetFirst({"","","Hello","World"})
 Return value: Hello
 ```
@@ -43,9 +43,9 @@ Return value: Hello
 Checks if ARRAY contains VALUE.
 ```
 =LAMBDA(VALUE,ARRAY,ISNUMBER(MATCH(VALUE,ARRAY,0)))
-
+```
 Examples:
-
+```
 =InArray({1,2,3,4,5}, 3)
 Return value: TRUE
 
@@ -57,9 +57,9 @@ Return value: FALSE
 Checks if VALUE has zero length.
 ```
 =LAMBDA(VALUE,LEN(VALUE)=0)
-
+```
 Examples:
-
+```
 =IsNull("Hello")
 Return value: FALSE
 
