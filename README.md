@@ -13,6 +13,19 @@ Name: IsNull
 Refers to: =LAMBDA(VALUE,LEN(VALUE)=0)
 ```
 
+## CleanFileName(FILENAME)
+Strips illegal characters from a filename, as documented in [Microsoft's Naming Files, Paths, and Namespaces](https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file).
+It expects a file name *only*, this will strip slashes, concatenate the path later.
+```
+=LAMBDA(FILENAME,REDUCE(FILENAME,HSTACK(CHAR(SEQUENCE(,30,,1)),{"<",">",":","""","/","\","|","?","*"}),LAMBDA(NAME,CHAR,SUBSTITUTE(NAME,CHAR,""))))
+
+Examples:
+
+CleanFileName("Bad> *File* Name!")
+Return value: Bad File Name!
+
+```
+
 ## GetFirst(ARRAY)
 Returns first non-zero length value in ARRAY.
 Expects data as ROWS. If number of COLS > 1, it assumes data is COLS and will transpose.
