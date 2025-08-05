@@ -26,6 +26,17 @@ Return value: Bad File Name!
 
 ```
 
+## GetDigits(TEXT)
+Strips all non-numeric characters from text
+```
+=LAMBDA(VALUE,REDUCE(VALUE,CHAR(HSTACK(SEQUENCE(,47,1),SEQUENCE(,127-58,58))),LAMBDA(TXT,CHR,SUBSTITUTE(TXT,CHR,""))))
+```
+Examples:
+```
+=GetDigits("Invoice 2025-01-01.xlsx")
+Return value: 20250101
+```
+
 ## GetFirst(ARRAY)
 Returns first non-zero length value in ARRAY.
 Expects data as ROWS. If number of COLS > 1, it assumes data is COLS and will transpose.
