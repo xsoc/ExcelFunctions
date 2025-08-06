@@ -13,6 +13,20 @@ Name: IsNull
 Refers to: =LAMBDA(VALUE,LEN(VALUE)=0)
 ```
 
+##Between(VALUE,LOWER,UPPER)
+Checks if numeric value is between an UPPER and LOWER bound.
+```
+=LAMBDA(VALUE,LOWER,UPPER,AND(VALUE>=LOWER,VALUE<=UPPER))
+```
+Examples:
+```
+=Between(10,5,15)
+Return value: TRUE
+
+=Between(10,20,30)
+Return value: FALSE
+```
+
 ## CleanFileName(FILENAME)
 Strips illegal characters from a filename, as documented in [Microsoft's Naming Files, Paths, and Namespaces](https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file).
 It expects a file name *only*, this will strip slashes, so concatenate the path later.
@@ -21,7 +35,7 @@ It expects a file name *only*, this will strip slashes, so concatenate the path 
 ```
 Examples:
 ```
-CleanFileName("Bad> *File* Name!")
+=CleanFileName("Bad> *File* Name!")
 Return value: Bad File Name!
 
 ```
