@@ -1,7 +1,7 @@
 # ExcelFunctions
 Excel LAMBDAs (Custom Functions)
 
-I'll list some of my LAMBDAs that may or may not be useful to other people. Nothing ground breaking.
+I'll list some of my LAMBDAs that may or may not be useful to other people. Typically trivial, nothing ground breaking.
 
 Refer to [Microsoft's LAMBDA documentation](https://support.microsoft.com/en-au/office/lambda-function-bd212d27-1cd1-4321-a34a-ccbf254b8b67) for a full explanation of LAMBDA functions.
 
