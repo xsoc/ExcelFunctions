@@ -3,7 +3,7 @@ Excel LAMBDAs (Custom Functions)
 
 I'll list some of my LAMBDAs that may or may not be useful to other people. Typically trivial, nothing ground breaking.
 
-Refer to [Microsoft's LAMBDA documentation](https://support.microsoft.com/en-au/office/lambda-function-bd212d27-1cd1-4321-a34a-ccbf254b8b67) for a full explanation of LAMBDA functions.
+Refer to Microsoft's LAMBDA [announcement](https://techcommunity.microsoft.com/blog/excelblog/announcing-lambda-helper-functions-lambdas-as-arguments-and-more/2576648) and [documentation](https://support.microsoft.com/en-au/office/lambda-function-bd212d27-1cd1-4321-a34a-ccbf254b8b67) for a full explanation of LAMBDA functions.
 
 TLDR: Add the functions to the Name Manager (Ribbon > Formulas > Defined Names > Name Manager, or Ctrl + F3).
 
