@@ -117,6 +117,10 @@ If the string length of Value exceeds Width, and optional Cut parameter is TRUE,
     )
 )
 ```
+Note:
+
+[TEXTJOIN](https://support.microsoft.com/en-au/office/textjoin-function-357b449a-ec91-49d0-80c3-0e8fc845691c) and [CONCAT](https://support.microsoft.com/en-au/office/concat-function-9b1a9a3f-94ff-41af-9736-694cbd6b4ca2) do not play nice with [SPILL ARRAYS](https://support.microsoft.com/en-au/office/dynamic-array-formulas-and-spilled-array-behavior-205c6b06-03ba-4151-89a1-87a7eb36e531), hence the use of the &amp; (ampersand) concatenation operator in this instance.
+
 Example:
 ```
 (Spaces shown as # for sake of clarity)
