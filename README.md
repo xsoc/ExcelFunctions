@@ -102,12 +102,20 @@ Calculates Net Book Value, assuming straight line depreciation.
 =LAMBDA(AcquisitionValue,CapitalisationDate,UsefulLife,NBVDate,MAX(0,AcquisitionValue-(NBVDate-CapitalisationDate)/365*(AcquisitionValue/UsefulLife)))
 ```
 
-## Pad(VALUE,WIDTH)
+## Pad(Value,Width,[Cut])
 Makes a value fixed width by padding with trailing spaces.
 
-If the string length of VALUE is > WIDTH, an NA error is thrown.
+If the string length of Value exceeds Width, and optional Cut parameter is TRUE, only the first WIDTH characters will be retuned. Otherwise, an NA error will be thrown.
 ```
-=LAMBDA(VALUE,WIDTH,IF(LEN(VALUE)>WIDTH,NA(),VALUE&REPT(" ",WIDTH-LEN(VALUE))))
+=LAMBDA(Value,Width,[Cut],
+    IF(LEN(Value)>Width,
+        IF(Cut,
+            LEFT(Value,Width),
+            NA()
+        ),
+        Value&REPT(" ",Width-LEN(Value))
+    )
+)
 ```
 Example:
 ```
@@ -116,6 +124,8 @@ Example:
 Return value: Hello#####
 =Pad("Hello",5)
 Return value: Hello
-=Pad("Hello",3)
+=Pad("Hello",2)
 Return value: #N/A
+=Pad("Hello",2,TRUE)
+Return value: He
 ```
