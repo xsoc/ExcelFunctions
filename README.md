@@ -13,7 +13,7 @@ Name: IsNull
 Refers to: =LAMBDA(VALUE,LEN(VALUE)=0)
 ```
 
-##Between(VALUE,LOWER,UPPER)
+## Between(VALUE,LOWER,UPPER)
 Checks if numeric value is between an UPPER and LOWER bound.
 ```
 =LAMBDA(VALUE,LOWER,UPPER,AND(VALUE>=LOWER,VALUE<=UPPER))
