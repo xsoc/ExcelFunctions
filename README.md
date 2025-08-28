@@ -53,10 +53,9 @@ Return value: 20250101
 
 ## GetFirst(ARRAY)
 Returns first non-zero length value in ARRAY.
-Expects data as ROWS. If number of COLS > 1, it assumes data is COLS and will transpose.
 If you need to pass discrete values, use VSTACK().
 ```
-=LAMBDA(ARRAY,LET(ARRAY_ROWS,IF(COLUMNS(ARRAY)>1,TRANSPOSE(ARRAY),ARRAY),INDEX(ARRAY_ROWS,XMATCH(TRUE,BYROW(ARRAY_ROWS,LAMBDA(VALUE,LEN(VALUE)>0))))))
+=LAMBDA(ARRAY,CHOOSEROWS(TOCOL(ARRAY,1),1))
 ```
 Examples:
 ```
