@@ -1,4 +1,4 @@
-# ExcelFunctions
+<img width="81" height="169" alt="image" src="https://github.com/user-attachments/assets/d5b29240-f03f-4996-b9ca-e84a3a24f7d6" /><img width="81" height="265" alt="image" src="https://github.com/user-attachments/assets/a2a7bfab-456e-4c99-ae50-28d87830c1fb" /><img width="81" height="25" alt="image" src="https://github.com/user-attachments/assets/c083ca2a-79bf-43b1-a52f-0feb92bc8cdc" /># ExcelFunctions
 Excel LAMBDAs (Custom Functions)
 
 I'll list some of my LAMBDAs that may or may not be useful to other people. Typically trivial, nothing ground breaking.
@@ -131,4 +131,27 @@ Return value: Hello
 Return value: #N/A
 =Pad("Hello",2,TRUE)
 Return value: He
+```
+
+## SimpleDecipher(OffsetStart,OffsetEnd,EncodedText)
+Enumerates possible simple offset cipher solutions for a given offset range. OffsetStart and OffsetEnd can be either positive or negative.  If descending order of offset is desired, put the larger value in OffsetStart and smaller in OffsetEnd.
+```
+=LAMBDA(OffsetStart,OffsetEnd,EncodedText,BYROW(SEQUENCE(MAX(OffsetStart,OffsetEnd)-MIN(OffsetStart,OffsetEnd)+1,1,OffsetStart,SIGN(OffsetEnd-OffsetStart)), LAMBDA(OFFSET,CONCAT(MAP(MID(EncodedText,SEQUENCE(LEN(EncodedText)),1),LAMBDA(CHR,CHAR(CODE(CHR)+OFFSET)))))))(-5,5,"TEXT")
+```
+
+Examples:
+```
+SimpleDecipher(-3,3,"FCJJM")
+Return value (array):
+EBIIL
+FCJJM
+GDKKN
+HELLO
+IFMMP
+JGNNQ
+KHOOR
+```
+To enumerate offsets in another column you can use:
+```
+=SEQUENCE(MAX(OffsetStart,OffsetEnd)-MIN(OffsetStart,OffsetEnd)+1,1,OffsetStart,SIGN(OffsetEnd-OffsetStart))
 ```
