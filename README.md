@@ -1,4 +1,4 @@
-<img width="81" height="169" alt="image" src="https://github.com/user-attachments/assets/d5b29240-f03f-4996-b9ca-e84a3a24f7d6" /><img width="81" height="265" alt="image" src="https://github.com/user-attachments/assets/a2a7bfab-456e-4c99-ae50-28d87830c1fb" /><img width="81" height="25" alt="image" src="https://github.com/user-attachments/assets/c083ca2a-79bf-43b1-a52f-0feb92bc8cdc" /># ExcelFunctions
+# ExcelFunctions
 Excel LAMBDAs (Custom Functions)
 
 I'll list some of my LAMBDAs that may or may not be useful to other people. Typically trivial, nothing ground breaking.
