@@ -136,20 +136,25 @@ Return value: He
 ## SimpleDecipher(OffsetStart,OffsetEnd,EncodedText)
 Enumerates possible simple offset cipher solutions for a given offset range. OffsetStart and OffsetEnd can be either positive or negative.  If descending order of offset is desired, put the larger value in OffsetStart and smaller in OffsetEnd.
 ```
-=LAMBDA(OffsetStart,OffsetEnd,EncodedText,BYROW(SEQUENCE(MAX(OffsetStart,OffsetEnd)-MIN(OffsetStart,OffsetEnd)+1,1,OffsetStart,SIGN(OffsetEnd-OffsetStart)), LAMBDA(OFFSET,CONCAT(MAP(MID(EncodedText,SEQUENCE(LEN(EncodedText)),1),LAMBDA(CHR,CHAR(CODE(CHR)+OFFSET)))))))(-5,5,"TEXT")
+=LAMBDA(OffsetStart,OffsetEnd,EncodedText,
+    BYROW(
+        SEQUENCE(MAX(OffsetStart,OffsetEnd)-MIN(OffsetStart,OffsetEnd)+1,1,OffsetStart,SIGN(OffsetEnd-OffsetStart)),
+        LAMBDA(OFFSET,CONCAT(MAP(MID(EncodedText,SEQUENCE(LEN(EncodedText)),1),LAMBDA(CHR,CHAR(CODE(CHR)+OFFSET)))))
+    )
+)
 ```
 
 Examples:
 ```
 SimpleDecipher(-3,3,"FCJJM")
 Return value (array):
+C@GGJ
+DAHHK
 EBIIL
 FCJJM
 GDKKN
 HELLO
 IFMMP
-JGNNQ
-KHOOR
 ```
 To enumerate offsets in another column you can use:
 ```
