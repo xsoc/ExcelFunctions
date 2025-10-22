@@ -165,7 +165,7 @@ To enumerate offsets in another column you can use:
 Filters Array by SearchArray where it contains SearchValue within an element, for example "EL" is contained in "HELLO".
 
 ```
-=LAMBDA(Array,SearchArray,SearchValue,FILTER(Array,BYROW(SearchArray,LAMBDA(NAME,IFERROR(SEARCH(SearchValue,NAME),FALSE)))))
+=LAMBDA(Array,SearchArray,SearchValue,FILTER(Array,ISNUMBER(SEARCH(SearchValue,SearchArray))))
 ```
 
 Examples:
