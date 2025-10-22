@@ -161,7 +161,7 @@ To enumerate offsets in another column you can use:
 =SEQUENCE(MAX(OffsetStart,OffsetEnd)-MIN(OffsetStart,OffsetEnd)+1,1,OffsetStart,SIGN(OffsetEnd-OffsetStart))
 ```
 
-##WildCardFilter(Array,SearchArray,SearchValue)
+## WildCardFilter(Array,SearchArray,SearchValue)
 Filters Array by SearchArray where it contains SearchValue within an element, for example "EL" is contained in "HELLO"
 ```
 =LAMBDA(Array,SearchArray,SearchValue,FILTER(Array,BYROW(SearchArray,LAMBDA(NAME,IFERROR(SEARCH(SearchValue,NAME),FALSE)))))
