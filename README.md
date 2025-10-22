@@ -146,7 +146,7 @@ Enumerates possible simple offset cipher solutions for a given offset range. Off
 
 Examples:
 ```
-SimpleDecipher(-3,3,"FCJJM")
+=SimpleDecipher(-3,3,"FCJJM")
 Return value (array):
 C@GGJ
 DAHHK
@@ -159,4 +159,26 @@ IFMMP
 To enumerate offsets in another column you can use:
 ```
 =SEQUENCE(MAX(OffsetStart,OffsetEnd)-MIN(OffsetStart,OffsetEnd)+1,1,OffsetStart,SIGN(OffsetEnd-OffsetStart))
+```
+
+##WildCardFilter(Array,SearchArray,SearchValue)
+Filters Array by SearchArray where it contains SearchValue within an element, for example "EL" is contained in "HELLO"
+```
+=LAMBDA(Array,SearchArray,SearchValue,FILTER(Array,BYROW(SearchArray,LAMBDA(NAME,IFERROR(SEARCH(SearchValue,NAME),FALSE)))))
+```
+
+Examples:
+
+```
+Consider the following table named Contacts
+| Name         | Email                   |
+| ------------ | ----------------------- |
+| Shinji Ikari | Shinji.Ikari@github.com |
+| Gendo Ikari  | Gendo.Ikari@github.com  |
+| Katsu Don    | Katsu.Don@github.com    |
+
+=WildCardFilter(Contacts,Contacts[Name],"Ikari")
+Output:
+| Shinji Ikari | Shinji.Ikari@github.com |
+| Gendo Ikari  | Gendo.Ikari@github.com  |
 ```
