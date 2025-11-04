@@ -156,6 +156,17 @@ Return value: #N/A
 Return value: He
 ```
 
+## ShuffleArray(ARRAY)
+```
+=LAMBDA(ARRAY,SORTBY(ARRAY,RANDARRAY(ROWS(ARRAY))))
+```
+Examples:
+```
+ShuffleArray({1,2,3,4,5})
+Return value:
+{4,3,1,2,5}
+```
+
 ## SimpleDecipher(OffsetStart,OffsetEnd,EncodedText)
 Enumerates possible simple offset cipher solutions for a given offset range. OffsetStart and OffsetEnd can be either positive or negative.  If descending order of offset is desired, put the larger value in OffsetStart and smaller in OffsetEnd.
 ```
@@ -166,7 +177,6 @@ Enumerates possible simple offset cipher solutions for a given offset range. Off
     )
 )
 ```
-
 Examples:
 ```
 =SimpleDecipher(-3,3,"FCJJM")
