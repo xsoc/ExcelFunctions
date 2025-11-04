@@ -40,6 +40,29 @@ Return value: Bad File Name!
 
 ```
 
+## DeleteElements(ARRAY,DELETE)
+Deletes array values from ARRAY which match values in the DELETE array
+```
+=LAMBDA(ARRAY,DELETE,
+    TEXTSPLIT(
+        TEXTJOIN(CHAR(30),TRUE,
+            MAP(ARRAY,
+                LAMBDA(VALUE,
+                    IF(ISNUMBER(MATCH(VALUE,DELETE,0)),"",VALUE)
+                )
+            )
+        ),
+        CHAR(30)
+    )
+)
+```
+Examples:
+```
+=DeleteElement({1,2,3,4,5,6,7,8,9,10},{3,4,6})
+Return value: {1,2,5,7,8,9,10}
+```
+
+
 ## GetDigits(TEXT)
 Strips all non-numeric characters from text
 ```
