@@ -118,6 +118,48 @@ Return value: TRUE
 Return value: FALSE
 ```
 
+## LaTeXEscape(Text, EscapeLineBreaks)
+Escapes special LaTeX characters, such as \ { } ^ _ etc.
+
+The optional EscapeLineBreaks param, which defaults to true, will replace line breaks with \\.
+Pass a value of false to disable this.
+```
+=LAMBDA(TextValue,[EscapeLineBreaks],
+    LET(CharMap,
+        VSTACK(
+            {"\","\textbackslash{}"},
+            {"{","\{"},
+            {"}","\}"},
+            {"#","\#"},
+            {"&","\&"},
+            {"_","\_"},
+            {"%","\%"},
+            {"$","\textdollar{}"},
+            {"~","\textasciitilde{}"},
+            {"^","\textasciicircum{}"},
+            IF(OR(ISOMITTED(EscapeLineBreaks),EscapeLineBreaks=TRUE),HSTACK(CHAR(10),"\\"),{"",""})
+        ),REDUCE(TextValue,SEQUENCE(ROWS(CharMap)),LAMBDA(String,ID,SUBSTITUTE(String,INDEX(CharMap,ID,1),INDEX(CharMap,ID,2))))
+    )
+)
+```
+
+## LaTeXTable(Area,[Alignment],[LeadingTab])
+Converts an array to a LaTeX table.
+
+By default every column is left aligned with no vertical lines, manually provide the entire alignment string to override this.
+The within the tablur block items are indented by a tab character, or, if supplied, the LeadingTab string.
+
+I suggest you run LaTeXEscape over the array before passing the result to LaTeXTable if your data may contain LaTeX breaking characters.
+```
+=LAMBDA(Area,[Alignment],[LeadingTab],
+  VSTACK(
+    "\begin{tabular}{" & IF(ISOMITTED(Alignment),REPT("l",COLUMNS(Area)),Alignment) & "}",
+    IF(ISOMITTED(LeadingTab),CHAR(9),LeadingTab) & BYROW(Area,LAMBDA(RowData,TEXTJOIN(" & ",FALSE,RowData))) & "\\",
+    "\end{tabular}"
+  )
+)
+```
+
 ## NetBookValue(AcquisitionValue,CapitalisationDate,UsefulLife,NBVDate)
 Calculates Net Book Value, assuming straight line depreciation.
 ```
