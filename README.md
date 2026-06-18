@@ -170,7 +170,7 @@ Calculates Net Book Value, assuming straight line depreciation.
 Returns statistical outliers in an array based on the 1.5 x IQR method.
 Throws an #N/A error if no outliers are found.
 ```
-=LAMBDA(Array,LET(Sorted,SORT(TOCOL(Array)),FirstQ,MEDIAN(CHOOSEROWS(Sorted,SEQUENCE(ROUNDUP(ROWS(Array)/2,0)))),ThirdQ,MEDIAN(CHOOSEROWS(Sorted,SEQUENCE(ROUNDUP(ROWS(Array)/2,0),1,ROUNDDOWN(ROWS(Array)/2,0)))),IQR,ThirdQ-FirstQ,FILTER(Array,(Array<FirstQ-(1.5*IQR))+(Array>FirstQ+(1.5*IQR)),NA())))
+=LAMBDA(Array,LET(Sorted,SORT(TOCOL(Array)),FirstQ,MEDIAN(CHOOSEROWS(Sorted,SEQUENCE(ROUNDUP(ROWS(Array)/2,0)))),ThirdQ,MEDIAN(CHOOSEROWS(Sorted,SEQUENCE(ROUNDUP(ROWS(Array)/2,0),1,ROUNDDOWN(ROWS(Array)/2,0)))),IQR,ThirdQ-FirstQ,FILTER(Array,(Array<FirstQ-(1.5*IQR))+(Array>ThirdQ+(1.5*IQR)),NA())))
 ```
 
 ## Pad(Value,Width,[Cut])
