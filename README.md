@@ -166,6 +166,12 @@ Calculates Net Book Value, assuming straight line depreciation.
 =LAMBDA(AcquisitionValue,CapitalisationDate,UsefulLife,NBVDate,MAX(0,AcquisitionValue-(NBVDate-CapitalisationDate)/365*(AcquisitionValue/UsefulLife)))
 ```
 
+## Outliers(Array)
+Returns statistical outliers in an array based on the 1.5 x IQR method.
+```
+=LAMBDA(Array,LET(Median,MEDIAN(Array),FirstQuartile,MEDIAN(FILTER(Array,Array<Median)),ThirdQuartile,MEDIAN(FILTER(Array,Array>Median)),InterQuartileRange,ThirdQuartile-FirstQuartile,FILTER(Array,(Array<(FirstQuartile-1.5*InterQuartileRange))+(Array>ThirdQuartile+1.5*InterQuartileRange))))
+```
+
 ## Pad(Value,Width,[Cut])
 Makes a value fixed width by padding with trailing spaces.
 
